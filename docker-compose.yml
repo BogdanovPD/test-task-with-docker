@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    image: sample-project-with-docker
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=pavel
+      - POSTGRES_USER=ps
+      - POSTGRES_DB=ps
+    ports:
+      - 5433:5432
