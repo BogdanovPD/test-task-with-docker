@@ -6,7 +6,15 @@ services:
     ports:
       - 8080:8080
     depends_on:
+      - nginx
       - db
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
   db:
     image: postgres:latest
     restart: always
